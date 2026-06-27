@@ -24,9 +24,11 @@ function Header({user,setUser,products}) {
   const navigate = useNavigate()
   return (
     <>
-      <main className='flexMain bg-[rgba(250,250,250)] text- py-4 sticky top-0 z-2 w-full'>
-        <section className='px-10 w-full max-w-350 flex justify-between items-center'>
-          <Link to={"/"} id="navLogo" className='font-bold text-3xl cursor-pointer black-ops-one-regular text-slate-700'>CoreFuel</Link>
+      <main className='flexMain bg-[#dedede] text- py-4 sticky top-0 z-2 w-full'>
+        <section className='px-10 container flex justify-between items-center'>
+          <Link to={"/"} id="navLogo" className='font-bold text-3xl cursor-pointer black-ops-one-regular text-slate-700'>
+            <img src="/logo.png" className="h-15" alt="" />
+          </Link>
           <ul className='hidden md:flex gap-5 text-xl border border-slate-200 rounded-3xl bg-slate-200 shadow-md px-8 py-2 font-semibold text-slate-700'>
             <Link to={"/"}>Home</Link>
             <Link to={"/all"}>Shop</Link>
