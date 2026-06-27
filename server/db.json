@@ -1,0 +1,152 @@
+{
+  "products": [
+    {
+      "id": "B1",
+      "group": "protein-bar",
+      "title": "Strawberry Protein Bar",
+      "description": "Protein bar with the sweet and refreshing taste of ripe strawberries",
+      "weight": "60g",
+      "image": "/Strawberry.jpeg",
+      "price": 89
+    },
+    {
+      "id": "B2",
+      "group": "protein-bar",
+      "title": "Coconut Blast Protein Bar",
+      "description": "Protein bar with a tropical blend of creamy coconut and natural sweetness",
+      "weight": "60g",
+      "image": "/Coco.png",
+      "price": 89
+    },
+    {
+      "id": "B3",
+      "group": "protein-bar",
+      "title": "Blueberry Protein Bar",
+      "description": "Protein bar packed with the juicy flavor of fresh blueberries",
+      "weight": "60g",
+      "image": "/berry.png",
+      "price": 89
+    },
+    {
+      "id": "B4",
+      "group": "protein-bar",
+      "title": "Peanut Protein Bar",
+      "description": "Protein bar with roasted peanut flavor and a satisfying nutty crunch",
+      "weight": "60g",
+      "image": "/peanut.png",
+      "price": 89
+    },
+    {
+      "id": "B5",
+      "group": "protein-bar",
+      "title": "Berry Blast XL",
+      "description": "Extra-large protein bar featuring a vibrant mix of berry flavors for lasting energy",
+      "weight": "90g",
+      "image": "/berryBlastXL.png",
+      "price": 129
+    },
+    {
+      "id": "P01",
+      "group": "protein-powder",
+      "title": "Tropical Blast Protein Powder",
+      "description": "Protein powder with mint, lemon and coconut freshness",
+      "weight": "1kg",
+      "image": "/tropicalProtein.png",
+      "price": 349
+    },
+    {
+      "id": "P02",
+      "group": "protein-powder",
+      "title": "Berry Blast Protein Powder",
+      "description": "Protein powder with a refreshing blend of mixed berries and natural fruit flavors",
+      "weight": "1kg",
+      "image": "/berryProtein.png",
+      "price": 349
+    },
+    {
+      "id": "P03",
+      "group": "protein-powder",
+      "title": "Mango Pineapple Protein Powder",
+      "description": "Protein powder with the tropical sweetness of ripe mango and juicy pineapple",
+      "weight": "1kg",
+      "image": "/mangoPowder.png",
+      "price": 349
+    },
+    {
+      "id": "P04",
+      "group": "protein-powder",
+      "title": "Mocha Latte Protein Powder",
+      "description": "Protein powder with rich coffee notes and smooth chocolate undertones",
+      "weight": "1kg",
+      "image": "/mocha-latte.png",
+      "price": 349
+    },
+    {
+      "id": "P05",
+      "group": "protein-powder",
+      "title": "Chocolate Protein Powder",
+      "description": "Protein powder with a creamy chocolate flavor for a rich and satisfying taste",
+      "weight": "1kg",
+      "image": "/chocoProtein.png",
+      "price": 349
+    }
+  ],
+  "groups":{
+    "foods":[
+      "protein-bar","protein-powder","creatine","helthy-cereal","protein-shake","green-tea","chaga-powder","chia-seeds"
+    ] ,
+    "equipment": [
+      "dumbbell",
+      "barbell",
+      "kettlebell",
+      "yoga-mat",
+      "dip-station",
+      "pull-up-bar",
+      "calisthenics"
+    ]
+  },
+  "users": [
+    {
+      "name": "Amal",
+      "email": "aja15070@gmail.com",
+      "password": "qwertyuiop",
+      "role": "user",
+      "id": "EBblIz-C7d4"
+    },
+    {
+      "name": "Joe Rogan",
+      "email": "jre@gmail.com",
+      "password": "12345678",
+      "role": "user",
+      "id": "5GjoIZs5mYQ"
+    },
+    {
+      "password": "admin1234",
+      "name": "Core Admin",
+      "email": "admin@corefuel.com",
+      "role": "admin",
+      "id": "FJqu6S9hth4"
+    }
+  ],
+  "cart": [
+    {
+      "userId": "EBblIz-C7d4",
+      "pID": "B2",
+      "qty": 6,
+      "id": "3w-if_nvW58"
+    },
+    {
+      "userId": "EBblIz-C7d4",
+      "pID": "B1",
+      "qty": 2,
+      "id": "GlwLU9sAnJY"
+    },
+    {
+      "userId": "EBblIz-C7d4",
+      "pID": "P01",
+      "qty": 2,
+      "id": "hlpYcA9bc9I"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
