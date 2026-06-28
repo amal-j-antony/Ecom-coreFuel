@@ -1,10 +1,11 @@
 import axiosInstance from "./axiosInstance";
 
-const commonAPI = async (method,url,reqBody) => {
+const commonAPI = async (method,url,reqBody, params = {}) => {
     const reqConfig = {
         method: method,
         data: reqBody,
         url,
+        params
     }
 
     try {

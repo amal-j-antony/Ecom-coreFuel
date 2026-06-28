@@ -148,7 +148,7 @@ function CartPage({ user, products, getCartProducts }) {
                         {!productData.length ?
                             <div className='flexCol gap-5'>
                                 <h1 className='text-center fw-bold text-3xl pt-20 fw-semibold'>Your cart is empty</h1>
-                                <img src="/shopping-cart.png" className='h-50' alt="" />
+                                <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669536/shopping-cart_z7imgh.png" className='h-50' alt="" />
                             </div>
 
                             :

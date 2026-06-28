@@ -26,7 +26,7 @@ function App() {
   })
   const [products, setProducts] = useState([])
   const [cartUpdate, setCartUpdate] = useState(0)
-  console.log("products:",products);
+  console.log("products:", products);
   console.log(user);
   console.log(cartUpdate);
 
@@ -37,14 +37,52 @@ function App() {
     userDetails && setUser(userDetails)
   }
 
-  const getCartProducts =  async() => {
+  const getCartProducts = async () => {
     try {
       const result = await getCartItemsAPI(user.id)
       console.log(result);
       setProducts(result.data)
+      return (result.data)
     } catch (error) {
       console.log(error);
     }
+  }
+
+  const addtoCart = async (productID) => {
+    let cartItem
+    const getItem = await getCartItemByIdAPI(productID, user.id)
+    console.log(getItem);
+
+    if (getItem.data.length != 0) {
+      cartItem = getItem.data[0]
+      cartItem.qty += 1
+      try {
+        const result = await updateExistingProductinCartAPI(cartItem, cartItem.id)
+        console.log(result);
+
+
+      } catch (error) {
+        console.log(error);
+
+      }
+    } else {
+      cartItem = {
+        userId: user.id,
+        pID: productID,
+        qty: 1
+      }
+      try {
+        const result = await addProductToCartAPI(cartItem)
+        console.log(result);
+        setCartUpdate(cartUpdate + 1)
+
+      } catch (error) {
+        console.log(error);
+
+      }
+    }
+
+
   }
 
   useEffect(() => {
@@ -54,8 +92,8 @@ function App() {
   useEffect(() => {
     getCartProducts()
     console.log("line 51 app");
-    
-  },[user.id,cartUpdate])
+
+  }, [user.id, cartUpdate])
   return (
     <>
       <ToastContainer
@@ -68,21 +106,31 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="dark"
         transition={Bounce}
       />
-      {location.pathname!= "/payment" && <Header user={user} setUser={setUser} products={products} carUpdate={cartUpdate} />}
+      {location.pathname != "/payment" && <Header user={user} setUser={setUser} products={products} carUpdate={cartUpdate} />}
       <Routes>
-        <Route path='/all' element={<Shop/>} />
-        <Route path = "/payment" element={<Payment/>} />
-        <Route path='/' element={<Home user={user} setCartUpdate={setCartUpdate} cartUpdate={cartUpdate} />} />
-        <Route path='/productPage/:id' element={<ProducePage />} />
+        <Route path='/all' element={<Shop addtoCart={addtoCart} />} />
+
+        <Route path="/payment" element={<Payment />} />
+
+        <Route path='/' element={<Home user={user} setCartUpdate={setCartUpdate} cartUpdate={cartUpdate} addtoCart={addtoCart} />} />
+
+        <Route path='/productPage/:id' element={<ProducePage getCartProducts={getCartProducts} products={products} user={user} />} />
+
         <Route path="/register" element={<Register user={user} setUser={setUser} />} />
+
         <Route path='/login' element={<Login user={user} setUser={setUser} />} />
+
         <Route path='/userProfile/user/:id' element={<UserProfile user={user} setUser={setUser} />} />
+        
         <Route path='/userProfile/admin/:id' element={<AdminDashboard user={user} setUser={setUser} />} />
+
         <Route path='/subscriptionLanding' element={<Subscription />} />
+
         <Route path='/cart' element={<CartPage user={user} products={products} setProducts={setProducts} carUpdate={cartUpdate} getCartProducts={getCartProducts} />} />
+        
         <Route path='/*' element={<NotFound />} />
       </Routes>
     </>

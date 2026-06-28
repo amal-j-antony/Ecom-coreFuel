@@ -61,3 +61,13 @@ export const addUserAPI = async (userData) => {
 export const deleteItemInCartAPI = async (id) => {
    return await commonAPI("DELETE",`${serverURL}/cart/${id}`, {})
 }
+
+//edit item qty in cart
+export const editCartItemQTYapi = async (id,data) => {
+   return await commonAPI("PATCH",`${serverURL}/cart/${id}`,data)
+}
+
+//get recommended items
+export const getRecommendedAPI = async () => {
+   return await commonAPI("GET",`${serverURL}/products`,{}, { recommended: true})
+}

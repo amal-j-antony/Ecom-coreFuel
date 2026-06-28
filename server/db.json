@@ -6,7 +6,7 @@
       "title": "Strawberry Protein Bar",
       "description": "Protein bar with the sweet and refreshing taste of ripe strawberries",
       "weight": "60g",
-      "image": "/Strawberry.jpeg",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Strawberry-Photoroom_mwwdc4.png",
       "price": 89
     },
     {
@@ -15,7 +15,7 @@
       "title": "Coconut Blast Protein Bar",
       "description": "Protein bar with a tropical blend of creamy coconut and natural sweetness",
       "weight": "60g",
-      "image": "/Coco.png",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Coco-Photoroom_yemhsj.png",
       "price": 89
     },
     {
@@ -24,7 +24,7 @@
       "title": "Blueberry Protein Bar",
       "description": "Protein bar packed with the juicy flavor of fresh blueberries",
       "weight": "60g",
-      "image": "/berry.png",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/berry-Photoroom_skuteh.png",
       "price": 89
     },
     {
@@ -33,7 +33,7 @@
       "title": "Peanut Protein Bar",
       "description": "Protein bar with roasted peanut flavor and a satisfying nutty crunch",
       "weight": "60g",
-      "image": "/peanut.png",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669534/peanut-transparent_bnb63y.png",
       "price": 89
     },
     {
@@ -42,7 +42,8 @@
       "title": "Berry Blast XL",
       "description": "Extra-large protein bar featuring a vibrant mix of berry flavors for lasting energy",
       "weight": "90g",
-      "image": "/berryBlastXL.png",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669538/berryBlastXLnewLogo-Photoroom_nf49za.png",
+      "recommended": true,
       "price": 129
     },
     {
@@ -51,7 +52,7 @@
       "title": "Tropical Blast Protein Powder",
       "description": "Protein powder with mint, lemon and coconut freshness",
       "weight": "1kg",
-      "image": "/tropicalProtein.png",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669536/tropicalProtein-Photoroom_zrk3ee.png",
       "price": 349
     },
     {
@@ -60,7 +61,8 @@
       "title": "Berry Blast Protein Powder",
       "description": "Protein powder with a refreshing blend of mixed berries and natural fruit flavors",
       "weight": "1kg",
-      "image": "/berryProtein.png",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669530/berryProtein-Photoroom_yicbiq.png",
+      "recommended": true,
       "price": 349
     },
     {
@@ -69,7 +71,8 @@
       "title": "Mango Pineapple Protein Powder",
       "description": "Protein powder with the tropical sweetness of ripe mango and juicy pineapple",
       "weight": "1kg",
-      "image": "/mangoPowder.png",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669538/mangoPowder-Photoroom_itpxtk.png",
+      "recommended": true,
       "price": 349
     },
     {
@@ -78,7 +81,7 @@
       "title": "Mocha Latte Protein Powder",
       "description": "Protein powder with rich coffee notes and smooth chocolate undertones",
       "weight": "1kg",
-      "image": "/mocha-latte.png",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669536/mocha-latte-Photoroom_b7cqye.png",
       "price": 349
     },
     {
@@ -87,14 +90,46 @@
       "title": "Chocolate Protein Powder",
       "description": "Protein powder with a creamy chocolate flavor for a rich and satisfying taste",
       "weight": "1kg",
-      "image": "/chocoProtein.png",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669531/protein-powder-hero_ydvirv.png",
       "price": 349
+    },
+    {
+      "id": "C01",
+      "group": "creatine",
+      "title": "Creatine Monohydrate",
+      "variant": "unflavored",
+      "description": "Pure, unflavored micronized creatine designed for baseline strength and athletic power.",
+      "weight": "1kg",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669534/creatine-gemini1-Photoroom_btwamu.png",
+      "price": 599
+    },
+    {
+      "id": "C02",
+      "group": "creatine",
+      "title": "Creatine + HMB",
+      "variant": "HMB",
+      "description": "An advanced, dual-action formula combining pure creatine with HMB (Beta-hydroxy-beta-methylbutyrate).",
+      "weight": "1kg",
+      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782673163/copy_of_creatine-red-photoroom_xyolrw.png",
+      "price": 599,
+      "recommended": true
     }
   ],
-  "groups":{
-    "foods":[
-      "protein-bar","protein-powder","creatine","helthy-cereal","protein-shake","green-tea","chaga-powder","chia-seeds"
-    ] ,
+  "featured": [
+
+  ],
+
+  "groups": {
+    "foods": [
+      "protein-bar",
+      "protein-powder",
+      "creatine",
+      "helthy-cereal",
+      "protein-shake",
+      "green-tea",
+      "chaga-powder",
+      "chia-seeds"
+    ],
     "equipment": [
       "dumbbell",
       "barbell",
@@ -131,21 +166,9 @@
   "cart": [
     {
       "userId": "EBblIz-C7d4",
-      "pID": "B2",
-      "qty": 6,
-      "id": "3w-if_nvW58"
-    },
-    {
-      "userId": "EBblIz-C7d4",
-      "pID": "B1",
-      "qty": 2,
-      "id": "GlwLU9sAnJY"
-    },
-    {
-      "userId": "EBblIz-C7d4",
       "pID": "P01",
       "qty": 2,
-      "id": "hlpYcA9bc9I"
+      "id": "JeVB3awmOpM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
