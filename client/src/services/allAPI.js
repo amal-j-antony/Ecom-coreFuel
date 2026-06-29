@@ -71,3 +71,8 @@ export const editCartItemQTYapi = async (id,data) => {
 export const getRecommendedAPI = async () => {
    return await commonAPI("GET",`${serverURL}/products`,{}, { recommended: true})
 }
+
+//get testimonials
+export const getTestimonialsAPI = async () => {
+   return await commonAPI("GET",`${serverURL}/testimonials`,{})
+}

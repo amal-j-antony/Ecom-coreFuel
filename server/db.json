@@ -115,10 +115,6 @@
       "recommended": true
     }
   ],
-  "featured": [
-
-  ],
-
   "groups": {
     "foods": [
       "protein-bar",
@@ -163,6 +159,88 @@
       "id": "FJqu6S9hth4"
     }
   ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Alex Roberts",
+      "username": "@alexlifts",
+      "rating": 5,
+      "title": "Best protein I've tried",
+      "review": "I've been through at least six different brands and CoreFuel mixes the smoothest by far. Chocolate flavour is unreal."
+    },
+    {
+      "id": 2,
+      "name": "Sarah Mitchell",
+      "username": "@sarahruns",
+      "rating": 5,
+      "title": "Perfect after long runs",
+      "review": "Recovery has noticeably improved since switching. No bloating and it actually tastes great with just water."
+    },
+    {
+      "id": 3,
+      "name": "Jake Turner",
+      "username": "@jaketrainz",
+      "rating": 4,
+      "title": "Solid quality",
+      "review": "Love the ingredient transparency. Would like to see more flavours, but the nutrition profile is excellent."
+    },
+    {
+      "id": 4,
+      "name": "Emily Carter",
+      "username": "@emfit",
+      "rating": 5,
+      "title": "Actually mixes well",
+      "review": "No clumps, no chalky texture, and 30g of protein per serving. Easily my new favourite whey."
+    },
+    {
+      "id": 5,
+      "name": "Ryan Brooks",
+      "username": "@ryanstrength",
+      "rating": 5,
+      "title": "Fast delivery",
+      "review": "Ordered on Tuesday afternoon and it arrived the next morning. Packaging was premium too."
+    },
+    {
+      "id": 6,
+      "name": "Daniel Harris",
+      "username": "@danielbench",
+      "rating": 4,
+      "title": "Great value",
+      "review": "High-quality ingredients for the price. Wish the scoop was a little bigger but that's a minor complaint."
+    },
+    {
+      "id": 7,
+      "name": "Olivia Green",
+      "username": "@livfitness",
+      "rating": 5,
+      "title": "Love the vanilla flavour",
+      "review": "Vanilla tastes natural instead of overly sweet. I've been using it in smoothies every morning."
+    },
+    {
+      "id": 8,
+      "name": "Chris Walker",
+      "username": "@chrispower",
+      "rating": 5,
+      "title": "Recovery feels better",
+      "review": "Been lifting five days a week and my recovery has definitely improved. Highly recommend."
+    },
+    {
+      "id": 9,
+      "name": "Nathan Cole",
+      "username": "@natelift",
+      "rating": 4,
+      "title": "Very impressed",
+      "review": "Good macros, mixes instantly and doesn't upset my stomach. Will be buying another tub."
+    },
+    {
+      "id": 10,
+      "name": "Megan Lewis",
+      "username": "@megains",
+      "rating": 5,
+      "title": "Worth every penny",
+      "review": "You can tell this isn't a cheap protein. Great taste, premium packaging and excellent customer service."
+    }
+  ],
   "cart": [
     {
       "userId": "EBblIz-C7d4",
@@ -170,6 +248,6 @@
       "qty": 2,
       "id": "JeVB3awmOpM"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
+  
 }

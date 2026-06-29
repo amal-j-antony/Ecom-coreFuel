@@ -11,11 +11,12 @@ import {
 import { Link, useNavigate } from 'react-router-dom'
 import { FaCartPlus } from "react-icons/fa";
 import { HashLink } from 'react-router-hash-link'
-import { addProductToCartAPI, getCartItemByIdAPI, getProductsInGroup, getRecommendedAPI, updateExistingProductinCartAPI } from '@/services/allAPI';
+import { addProductToCartAPI, getCartItemByIdAPI, getProductsInGroup, getRecommendedAPI, getTestimonialsAPI, updateExistingProductinCartAPI } from '@/services/allAPI';
 
 function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
 
   const [recommended, setRecommended] = useState([])
+  const [testimonials, setTestimonials] = useState([])
 
   const getRecommended = async () => {
     const result = await getRecommendedAPI()
@@ -23,8 +24,18 @@ function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
     setRecommended(result.data)
   }
 
+  const getTestimonials = async () => {
+    const result = await getTestimonialsAPI()
+    console.log(result);
+    setTestimonials(result.data)
+
+  }
+
+
+
   useEffect(() => {
     getRecommended()
+    getTestimonials()
   }, [])
 
 
@@ -79,11 +90,11 @@ function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
             <span className="text-8xl font-bold">Recommended</span> by Mr. Universe finalist <span className="text-9xl font-bold">John Smith</span>
           </div>
           <div className="h-full row-span-2 p-5 flexCol bg-secondary text-background text-5xl text-center">
-            <img src="/grass.png" alt="" className="h-50" />
+            <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669530/grass_tnegtf.png" alt="" className="h-50" />
             Grass-fed whey sourced from Irish dairy farms.
           </div>
           <div className="h-100 p-5 flexMain font-bold text-secondary bg-primary text-5xl text-center">
-            <img src="/no-gmo.png" className="h-50" alt="" />
+            <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669529/no-gmo_asv5zl.png" className="h-50" alt="" />
             Non-GMO and gluten free
           </div>
           <div className="h-100 p-5 flexCol text-5xl text-black font-bold col-span-2 bg-accent w-full">
@@ -101,18 +112,18 @@ function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
           <h1 className=' font-bold text-4xl pb-10'>Recommended for you</h1>
         </div>
 
-        <div className="flex flex-wrap items-center gap-5 w-[90%] ">
+        <div className="flex flex-nowrap items-center gap-5 w-[90%] overflow-x-auto scrollbar-none">
           {recommended.map((item, index) => (
             <div className="flexCol shrink-0 border border-primary bg-primary rounded-2xl" key={item.id}>
               <div className="relative">
-                <img src={item.image} className='h-100 rounded-2xl rounded-b-none cursor-pointer' alt="" onClick={() => Navigate(`/productPage/${item.id}`)} />
+                <img src={item.image} className='h-50 md:h-100 rounded-2xl rounded-b-none cursor-pointer' alt="" onClick={() => Navigate(`/productPage/${item.id}`)} />
               </div>
               <div className="flex justify-center items-center w-full py-5 border border-primary border-t-accent text-xl font-bold">
                 <span>{item.title}</span>
               </div>
-              <div className="flex px-2 pb-5 justify-between items-center w-full">
+              <div className="flex max-md:flex-wrap px-2 pb-5 justify-between items-center w-full">
                 <span className='p-2 rounded-2xl bg-background text-white'>₹{item.price}</span>
-                <span onClick={() => Navigate(`/productPage/${item.id}`)} className="cursor-pointer py-2 px-4 bg-background text-white rounded-3xl">View Details </span>
+                <span onClick={() => Navigate(`/productPage/${item.id}`)} className="hidden md:flex cursor-pointer py-2 px-4 bg-background text-white rounded-3xl">View Details </span>
                 <button onClick={() => addtoCart(item.id)} className='flex items-center gap-5 py-2 px-4 rounded-2xl bg-accent text-black text-xl cursor-pointer'>Add to Cart <FaCartPlus /></button>
               </div>
             </div>
@@ -120,18 +131,32 @@ function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
         </div>
       </section>
 
+      {/* testimonials */}
 
+      <section className="flexCol w-full my-10">
+        <h1 className="w-[90%] text-3xl mb-10 font-bold">What our customers say</h1>
+        <div className="flex flex-nowrap items-center gap-10 w-[90%] overflow-x-auto scrollbar-none">
 
+          {
+            testimonials.map((item,index) => (
+              <div className="flex gap-5 p-5 bg-primary rounded-3xl shrink-0 ">
+                <img className="rounded-full" src={`https://picsum.photos/100?random=1${index + 1}`} ></img>
+                <div className=" flex flex-col gap-5 w-140">
+                  
+                  <h1> {item.name}</h1>
+                  <p>{item.review}</p>
+                </div>
+                
+              </div>
 
-      {/* about section */}
-      {/* <section className=' flexCol w-full'>
-        <div className=' flexCol relative'>
-          <img className='rounded-3xl' src="/ropeWorkout.jpg" alt="" />
-          <div className="w-full absolute h-full flexCol">
-            <h1 className='text-white text-4xl black-ops-one-regular'>Every rep. Every workout. Every goal. We're with you.</h1>
-          </div>
+            ))
+          }
         </div>
-      </section> */}
+      </section>
+
+
+
+
     </>
   )
 }

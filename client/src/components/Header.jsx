@@ -24,7 +24,7 @@ function Header({user,setUser,products}) {
   const navigate = useNavigate()
   return (
     <>
-      <main className='flexMain bg-background text- py-4 sticky top-0 z-2 w-full'>
+      <main className='flexMain bg-background py-4 sticky top-0 z-2 w-full'>
         <section className='w-[90%] flex justify-between items-center'>
           <Link to={"/"} id="navLogo" className='font-bold text-3xl cursor-pointer black-ops-one-regular text-slate-700'>
             <img src="/logo-white.png" className="h-20" alt="" />

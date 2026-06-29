@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast, Bounce } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { IoIosArrowForward } from "react-icons/io";
 
 
 function CartPage({ user, products, getCartProducts }) {
@@ -146,9 +147,16 @@ function CartPage({ user, products, getCartProducts }) {
                         <h1 className="text-5xl font-bold py-10">Cart</h1>
                         <hr className=" bg-slate-100 " />
                         {!productData.length ?
-                            <div className='flexCol gap-5'>
+                            <div className='flexCol gap-10'>
                                 <h1 className='text-center fw-bold text-3xl pt-20 fw-semibold'>Your cart is empty</h1>
                                 <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669536/shopping-cart_z7imgh.png" className='h-50' alt="" />
+                               <div className='flex gap-5'>
+                                    <button onClick={() => navigate("/all")} className='flex items-center gap-3 cursor-pointer py-5 px-5 bg-primary rounded-3xl text-xl font-bold'>View products <IoIosArrowForward /> </button>
+                                    {!user.id &&
+    
+                                        <button onClick={() => navigate("/login")} className='flex items-center gap-3 cursor-pointer py-5 px-5 bg-accent text-black rounded-3xl text-xl font-bold'>Log in <IoIosArrowForward /> </button>
+                                    }
+                               </div>
                             </div>
 
                             :
@@ -180,10 +188,10 @@ function CartPage({ user, products, getCartProducts }) {
                                                 </span>
                                             </td>
                                             <td className='h-full'>
-                                                <div className='border bg-slate-100 flex justify-between items-center gap-5'>
-                                                    <button onClick={() => handleQtyChange(item.cartID, 1, index)} className='border p-3 bg-slate-300'><Plus /></button>
+                                                <div className=' bg-primary flex justify-between items-center gap-5'>
+                                                    <button onClick={() => handleQtyChange(item.cartID, 1, index)} className=' p-3 bg-accent'><Plus /></button>
                                                     <span className='text-2xl'>{item.qty}</span>
-                                                    <button onClick={() => handleQtyChange(item.cartID, -1, index)} className='border p-3 bg-slate-300'><Minus /></button>
+                                                    <button onClick={() => handleQtyChange(item.cartID, -1, index)} className=' p-3 bg-accent'><Minus /></button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -193,31 +201,46 @@ function CartPage({ user, products, getCartProducts }) {
                         }
                     </div>
                     <div className="max-md:w-full md:min-w-[30vw] flex justify-center items-center">
-                        <div className="shadow-lg bg-slate-100 p-10 w-full grid grid-cols-1 gap-5">
-                            <span className='text-3xl font-semibold'>Summary</span>
-                            <hr className='h-1 bg-slate-900' />
-                            <span className='flex justify-between text-xl'>Total items: <span>{productData.reduce((a, b) => (a + b.qty), 0)}</span></span>
-                            <span className='flex justify-between text-xl'>Total cost: <span>INR {productData.reduce((a, b) => (a + b.price * b.qty), 0)}</span></span>
-                            <span className='flex justify-between text-xl'>Shipping cost: {shipping ?
-                                <span>INR {shipping} </span> :
-                                <span>Free</span>
-                            } </span>
-                            <div className='flex gap-3'>
-                                <input onChange={(e) => setCoupon(e.target.value)} type="text" placeholder='Enter a coupon code' className='border border-slate-500 py-2 px-5 rounded w-full' />
-                                <button onClick={handleCoupon} className='shadow p-2 border border-slate-500 rounded cursor-pointer hover:bg-slate-500 hover:text-white transition duration-300 ease-out'>Submit</button>
-                            </div>
+                        {
+                            !productData.length ?
+                                <div className="">
+                                </div>
+                                :
+                                <div className="shadow-lg bg-primary p-10 w-full grid grid-cols-1 gap-5">
+                                    <span className='text-3xl font-semibold'>Summary</span>
+                                    <hr className='h-1 bg-slate-900' />
+                                    <span className='flex justify-between text-xl'>Total items: <span>{productData.reduce((a, b) => (a + b.qty), 0)}</span></span>
+                                    <span className='flex justify-between text-xl'>Total cost: <span>INR {productData.reduce((a, b) => (a + b.price * b.qty), 0)}</span></span>
+                                    <span className='flex justify-between text-xl'>Shipping cost: {shipping ?
+                                        <span>INR {shipping} </span> :
+                                        <span>Free</span>
+                                    } </span>
+                                    <div className='flex gap-3'>
+                                        <input onChange={(e) => setCoupon(e.target.value)} type="text" placeholder='Enter a coupon code' className='border border-slate-500 py-2 px-5 rounded w-full' />
+                                        <button onClick={handleCoupon} className='shadow p-2 border border-slate-500 rounded cursor-pointer hover:bg-slate-500 hover:text-white transition duration-300 ease-out'>Submit</button>
+                                    </div>
 
-                            <hr className="h-1 bg-slate-900" />
-                            <span>Add address</span>
-                            <span className='flex justify-center'>Select Payment Method</span>
-                            <div className="flex justify-center gap-10">
-                                <span className="border border-slate-500 p-2">UPI</span>
-                                <span className="border border-slate-500 p-2">CARD</span>
-                                <span className="border border-slate-500 p-2">NET Banking</span>
-                            </div>
-                            <span>Grand total: <span>INR {finalAmt}</span></span>
-                            <button onClick={() => navigate("/payment")} className='text-2xl font-bold bg-slate-700 text-white rounded py-3 hover:scale-[1.1] transition duration-300 ease-out'>Proceed to checkout</button>
-                        </div>
+                                    <hr className="h-1 bg-slate-900" />
+                                    <span>Add address</span>
+                                    <form action="">
+                                        <input type="text" placeholder='Address line 1' className='border-slate-500 border rounded cursor-pointer py-2 px-3 w-full' />
+                                        <input type="text" placeholder='Address line 2' className='border-slate-500 border rounded cursor-pointer py-2 px-3 w-full' />
+                                        <input type="text" placeholder='Country' className='border-slate-500 border rounded cursor-pointer py-2 px-3 w-full' />
+                                        <input type="text" placeholder='State' className='border-slate-500 border rounded cursor-pointer py-2 px-3 w-full' />
+                                        <input type="text" placeholder='City' className='border-slate-500 border rounded cursor-pointer py-2 px-3 w-full' />
+                                        <input type="text" placeholder='PINCODE / ZIPCODE' className='border-slate-500 border rounded cursor-pointer py-2 px-3 w-full' />
+                                        <input type="text" placeholder='Contact number' className='border-slate-500 border rounded cursor-pointer py-2 px-3 w-full' />
+                                    </form>
+                                    <span className='flex justify-center'>Select Payment Method</span>
+                                    <div className="flex justify-center gap-10">
+                                        <span className="border border-slate-500 p-2">UPI</span>
+                                        <span className="border border-slate-500 p-2">CARD</span>
+                                        <span className="border border-slate-500 p-2">NET Banking</span>
+                                    </div>
+                                    <span>Grand total: <span>INR {finalAmt}</span></span>
+                                    <button onClick={() => navigate("/payment")} className='text-2xl font-bold bg-slate-700 text-white rounded py-3 hover:scale-[1.1] transition duration-300 ease-out'>Proceed to checkout</button>
+                                </div>
+                        }
                     </div>
                 </div>
             </section>
