@@ -76,3 +76,28 @@ export const getRecommendedAPI = async () => {
 export const getTestimonialsAPI = async () => {
    return await commonAPI("GET",`${serverURL}/testimonials`,{})
 }
+
+//add order
+export const addOrderAPI = async (data) => {
+   return await commonAPI("POST",`${serverURL}/orders`,data)
+}
+
+// get orders by user ID
+export const getOrdersByUserAPI = async (userID) => {
+   return await commonAPI("GET",`${serverURL}/orders?user=${userID}`)
+}
+
+//get all orders
+export const getAllOrdersAPI = async () => {
+   return await commonAPI("GET",`${serverURL}/orders`,{})
+}
+
+//add products
+export const addProductsAPI = async (data) => {
+   return await commonAPI("POST",`${serverURL}/products`,data)
+}
+
+//delete Products
+export const deleteProductAPI = async (id) => {
+   return await commonAPI("DELETE",`${serverURL}/products/${id}`,{})
+}

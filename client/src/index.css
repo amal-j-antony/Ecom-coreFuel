@@ -54,7 +54,7 @@
 :root {
     --background: #060606;
     --foreground: #e5e2df;
-    --card: oklch(1 0 0);
+    --card: #2B2D36;
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);

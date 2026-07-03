@@ -1,5 +1,5 @@
 import { Separator } from '@/components/ui/separator';
-import { deleteItemInCartAPI, getAllProductsAPI, getCartItemsAPI, getMultipleCartItemsAPI } from '@/services/allAPI';
+import { addOrderAPI, deleteItemInCartAPI, getAllProductsAPI, getCartItemsAPI, getMultipleCartItemsAPI } from '@/services/allAPI';
 import {
     Plus,
     Minus
@@ -23,7 +23,7 @@ function CartPage({ user, products, getCartProducts }) {
     console.log(initialAmt);
     console.log(finalAmt);
     console.log(products);
-    console.log(productData);
+    console.log("productData:", productData);
 
     console.log(user.id);
 
@@ -116,6 +116,37 @@ function CartPage({ user, products, getCartProducts }) {
         }
     }
 
+    const handleOrder = async () => {
+        const order = {
+            user: user.id,
+            amount: finalAmt,
+            data: []
+        }
+        productData.map(item => {
+            order.data.push(item)
+        })
+        console.log(order);
+        try {
+            const result = await addOrderAPI(order)
+            console.log(result);
+            if (result.status == 201){
+                await Promise.all(
+                    productData.map(item => {
+                     deleteItemInCartAPI(item.cartID)
+                     console.log("delete",item.cartID);
+                     
+                })
+                )
+                navigate("/payment")
+                getCartProducts()
+            }
+        } catch (error) {
+            console.log(error);
+            
+        }
+
+    }
+
 
 
     useEffect(() => {
@@ -142,25 +173,25 @@ function CartPage({ user, products, getCartProducts }) {
     return (
         <>
             <section className='w-full h-full min-h-screen flex justify-center'>
-                <div className="w-full container max-md:flex-col flex justify-between gap-10 px-10">
-                    <div className='w-full'>
+                <div className="w-full container grid grid-cols-1 md:grid-cols-3 justify-between gap-10 px-10">
+                    <div className='w-full col-span-2'>
                         <h1 className="text-5xl font-bold py-10">Cart</h1>
                         <hr className=" bg-slate-100 " />
                         {!productData.length ?
                             <div className='flexCol gap-10'>
                                 <h1 className='text-center fw-bold text-3xl pt-20 fw-semibold'>Your cart is empty</h1>
                                 <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669536/shopping-cart_z7imgh.png" className='h-50' alt="" />
-                               <div className='flex gap-5'>
+                                <div className='flex gap-5'>
                                     <button onClick={() => navigate("/all")} className='flex items-center gap-3 cursor-pointer py-5 px-5 bg-primary rounded-3xl text-xl font-bold'>View products <IoIosArrowForward /> </button>
                                     {!user.id &&
-    
+
                                         <button onClick={() => navigate("/login")} className='flex items-center gap-3 cursor-pointer py-5 px-5 bg-accent text-black rounded-3xl text-xl font-bold'>Log in <IoIosArrowForward /> </button>
                                     }
-                               </div>
+                                </div>
                             </div>
 
                             :
-                            <table className='border-separate border-spacing-5'>
+                            <table className='border-separate border-spacing-5 w-full'>
                                 <thead>
                                     <tr>
                                         <th>
@@ -238,7 +269,7 @@ function CartPage({ user, products, getCartProducts }) {
                                         <span className="border border-slate-500 p-2">NET Banking</span>
                                     </div>
                                     <span>Grand total: <span>INR {finalAmt}</span></span>
-                                    <button onClick={() => navigate("/payment")} className='text-2xl font-bold bg-slate-700 text-white rounded py-3 hover:scale-[1.1] transition duration-300 ease-out'>Proceed to checkout</button>
+                                    <button onClick={() => handleOrder()} className='text-2xl font-bold bg-slate-700 text-white rounded py-3 hover:scale-[1.1] transition duration-300 ease-out'>Proceed to checkout</button>
                                 </div>
                         }
                     </div>

@@ -1,6 +1,7 @@
 import { addUserAPI, getUserByEmail } from '@/services/allAPI';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 function Register({ user, setUser }) {
@@ -55,23 +56,31 @@ function Register({ user, setUser }) {
         const validation = Object.values(formError).some(Boolean)
         console.log(validation);
         if(!validation){
-            setUserData({
+            const userDetail = {
                 name: input.name,
                 email: input.email,
-                password: input.password
-            })
-            handleRegister()
+                password: input.password,
+                role: "user"
+            }
+            handleRegister(userDetail)
     }
 
+}
 
-    async function handleRegister() {
+
+    async function handleRegister(userDetail) {
         
-    } {
+     {
             try {
-                const result = await addUserAPI(userData)
+                const result = await addUserAPI(userDetail)
                 console.log(result);
                 if(result.status >= 200 && result.status <300){
-                    alert("registration successful")
+                    Swal.fire({
+                        text: "Registration successful",
+                        theme: "dark"
+                    })
+                    setUserData(userDetail)
+
                     navigate("/login")
                 }
             } catch (error) {
@@ -85,8 +94,8 @@ function Register({ user, setUser }) {
 
     return (
         <>
-            <section className='w-full h-screen flexCol bg-slate-200'>
-                <div className='container flexCol gap-5 w-auto bg-slate-100 p-10 rounded-3xl'>
+            <section className='w-full h-screen flexCol bg-background'>
+                <div className='container flexCol gap-5 w-auto bg-primary p-10 rounded-3xl'>
                     <h1 className='text-4xl font-bold black-ops-one-regular'>Join CoreFuel</h1>
                     <div className='flexCol w-auto gap-5'>
                         <input required value={input.name} onChange={(e) => setInput({ ...input, name: e.target.value })} type="text" placeholder='Enter Name' className={ 'border border-slate-500 p-3 rounded-2xl'} />
@@ -123,13 +132,15 @@ function Register({ user, setUser }) {
 
 
 
-                        <button onClick={inputVerification} className='cursor-pointer border bg-slate-950 text-white font-semibold text-xl  p-3 rounded-xl w-full hover:bg-slate-100 hover:text-black transition-all duration-500'>Register Now</button>
+                        <button onClick={inputVerification} className='cursor-pointer bg-accent text-background font-semibold text-xl  p-3 rounded-xl w-full hover:bg-slate-100 hover:text-black transition-all duration-500'>Register Now</button>
 
                     </div>
                 </div>
             </section>
         </>
     )
+
+
 }
 
 export default Register

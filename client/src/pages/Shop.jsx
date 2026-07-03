@@ -8,13 +8,14 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from 'embla-carousel-autoplay';
 import { Link, useNavigate } from 'react-router-dom';
-import { addProductToCartAPI, getCartItemByIdAPI, getProductsInGroup, updateExistingProductinCartAPI } from '@/services/allAPI';
+import { addProductToCartAPI, getAllProductsAPI, getCartItemByIdAPI, getProductsInGroup, updateExistingProductinCartAPI } from '@/services/allAPI';
 import { FaCartPlus } from "react-icons/fa";
 
-function Shop() {
+function Shop({addtoCart}) {
 
   const [proteinBar, setProteinBar] = useState([])
   const [proteinPowder, setProteinPowder] = useState([])
+  const [products,setProducts] = useState([])
 
 
   const getProteinBars = async () => {
@@ -34,12 +35,20 @@ function Shop() {
   console.log(proteinBar);
   console.log(proteinPowder);
 
+  const getProducts = async () => {
+    const result = await getAllProductsAPI()
+    console.log(result);
+    setProducts(result.data)
+    
+  }
+
 
   const Navigate = useNavigate()
 
   useEffect(() => {
     getProteinBars()
     getProteinPowder()
+    getProducts()
   }, [])
   
 
@@ -63,7 +72,7 @@ function Shop() {
               </CarouselItem> */}
 
             <CarouselItem className="relative">
-              <img src="/hero-2.png" className='w-full h-screen' alt="" />
+              <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782798190/heroPurpleCreatine_ehc0sx.png" className='w-full h-screen' alt="" />
               {/* carousel text */}
               <div className="absolute w-1/2 h-full top-0 left-0 flex flex-col justify-center items-center">
                 <h1 className='text-4xl lg:text-8xl font-bold '>New flavor</h1>
@@ -74,12 +83,11 @@ function Shop() {
             </CarouselItem>
 
             <CarouselItem className='relative'>
-              <img src="/monthlyHeroSec.png" className='w-full h-screen' alt="" />
+              <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782798622/Untitled_design_1_jcnbbw.png" className='w-full h-screen' alt="" />
               {/* carousel text */}
               <div className="absolute w-1/2 h-full top-0 right-0 flex flex-col justify-center items-center">
-                <h1 className='text-4xl lg:text-6xl font-bold '>Protein essentials delivered</h1>
-                <h1 className='text-4xl lg:text-6xl font-bold '>To your doorstep</h1>
-                <h1 className='text-4xl lg:text-6xl font-bold '>Monthly</h1>
+                <h1 className='text-4xl lg:text-6xl font-bold '>Protein Bar XL</h1>
+                <h1 className='text-4xl lg:text-6xl font-bold '>Out Now</h1>
                 <Link className='p-2
                   mt-6 border border-black bg-[#457B9D] text-3xl lg:text-5xl font-semibold text-white bttn'>Check it out</Link>
               </div>
@@ -95,7 +103,21 @@ function Shop() {
         <div className="col-span-1 w-full flex flex-col items-center  ">
           <h1 className="py-10 text-4xl font-bold">Filters</h1>
           <div className="bg-primary rounded-3xl w-full sticky top-40 min-h-200 ms-20 flex flex-col items-center py-10">
-            coming soon
+             <ul className='flex flex-col gap-3'>
+              <li className='text-2xl font-bold'>FIlter by Product</li>
+              <li className='flex gap-5'>
+                <input type="checkbox" />Protein Bars
+              </li  >
+              <li className='flex gap-5'>
+                <input type="checkbox" />Protein Powder
+              </li>
+              <li className='flex gap-5'> 
+                <input type="checkbox" />Creatine
+              </li>
+              <li className='flex gap-5'>
+                <input type="checkbox" />Organic supplements
+              </li>
+             </ul>
           </div>
         </div>
 
@@ -104,10 +126,10 @@ function Shop() {
           {/* products row 2  */}
           <section className='py-10 flexCol w-full'>
             <div className='flex justify-start w-[90%]'>
-              <h1 className=' font-bold text-4xl pb-10'>Start your day with a scoopful of protein </h1>
+              <h1 className=' font-bold text-4xl'>All Products</h1>
             </div>
     
-            <div className="flex flex-wrap scrollbar-hide items-center gap-5 w-[90%] ">
+            {/* <div className="flex flex-wrap scrollbar-hide items-center gap-5 w-[90%] ">
               {proteinPowder.map((item, index) => (
                 <div className="flexCol shrink-0 border border-primary bg-primary rounded-2xl" key={item.id}>
                   <div className="relative">
@@ -123,16 +145,16 @@ function Shop() {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </section>
     
     
     
           {/* products row 1 */}
-          <section className=' py-10 w-full flexCol justify-center items-center bg-background'>
+          <section className=' pb-10 w-full flexCol justify-center items-center bg-background'>
     
             <div className="flex flex-wrap w-[90%] scrollbar-hide items-center gap-9  ">
-              {proteinBar?.map((item, index) => {
+              {products?.map((item, index) => {
                 return (
                   <div className="border border-primary flexCol shrink-0 rounded-2xl bg-primary" id={item.id} key={item.id}>
                     <img src={item.image} className='h-100 rounded-2xl rounded-b-none cursor-pointer' alt="" onClick={() => Navigate(`/productPage/${item.id}`)} />

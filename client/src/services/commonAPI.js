@@ -1,4 +1,4 @@
-import axiosInstance from "./axiosInstance";
+import axios from "axios"
 
 const commonAPI = async (method,url,reqBody, params = {}) => {
     const reqConfig = {
@@ -9,7 +9,7 @@ const commonAPI = async (method,url,reqBody, params = {}) => {
     }
 
     try {
-        const response = axiosInstance(reqConfig)
+        const response = axios(reqConfig)
         return response
     } catch (error) {
         throw error

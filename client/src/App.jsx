@@ -12,9 +12,10 @@ import AdminDashboard from './admin/AdminDashboard'
 import { ToastContainer, Bounce } from 'react-toastify'
 import CartPage from './pages/CartPage'
 import Subscription from './pages/Subscription'
-import { getCartItemsAPI } from './services/allAPI'
+import { addProductToCartAPI, getCartItemByIdAPI, getCartItemsAPI, updateExistingProductinCartAPI } from './services/allAPI'
 import Payment from './pages/Payment'
 import Shop from './pages/Shop'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -89,6 +90,7 @@ function App() {
     loadUser()
   }, [])
 
+
   useEffect(() => {
     getCartProducts()
     console.log("line 51 app");
@@ -123,16 +125,18 @@ function App() {
 
         <Route path='/login' element={<Login user={user} setUser={setUser} />} />
 
-        <Route path='/userProfile/user/:id' element={<UserProfile user={user} setUser={setUser} />} />
-        
+        <Route path='/userProfile/user/:id' element={<UserProfile user={user} setUser={setUser} addtoCart={addtoCart} />} />
+
         <Route path='/userProfile/admin/:id' element={<AdminDashboard user={user} setUser={setUser} />} />
 
         <Route path='/subscriptionLanding' element={<Subscription />} />
 
         <Route path='/cart' element={<CartPage user={user} products={products} setProducts={setProducts} carUpdate={cartUpdate} getCartProducts={getCartProducts} />} />
-        
+
         <Route path='/*' element={<NotFound />} />
       </Routes>
+      <br /><br />
+      {location.pathname != "/payment"  && <Footer user={user} setUser={setUser} products={products} carUpdate={cartUpdate} />}
     </>
   )
 }

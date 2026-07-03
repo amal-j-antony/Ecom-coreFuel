@@ -12,6 +12,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FaCartPlus } from "react-icons/fa";
 import { HashLink } from 'react-router-hash-link'
 import { addProductToCartAPI, getCartItemByIdAPI, getProductsInGroup, getRecommendedAPI, getTestimonialsAPI, updateExistingProductinCartAPI } from '@/services/allAPI';
+import Stars from "@/components/Stars";
+import ProductRow from "@/components/ProductRow";
 
 function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
 
@@ -31,7 +33,7 @@ function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
 
   }
 
-
+  const Navigate = useNavigate()
 
   useEffect(() => {
     getRecommended()
@@ -46,7 +48,7 @@ function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
       <section className="w-full py-30 flex justify-center items-center flex-col gap-5 bg-background">
         <h1 className='text-4xl font-bold text-accent'>Fuel Every Rep. Power Every Goal.</h1>
         <h3 className='text-xl w-[30%] text-center'>Premium protein, creatine, pre-workout, protein bars, and recovery essentials. Everything you need to train harder, recover faster, and hit your next PR</h3>
-        <button className="text-background text-xl font-bold bg-accent p-5 rounded-xl cursor-pointer">Shop Now</button>
+        <button onClick={()=> Navigate("/all")} className="text-background text-xl font-bold bg-accent p-5 rounded-xl cursor-pointer">Shop Now</button>
       </section>
 
 
@@ -113,21 +115,7 @@ function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
         </div>
 
         <div className="flex flex-nowrap items-center gap-5 w-[90%] overflow-x-auto scrollbar-none">
-          {recommended.map((item, index) => (
-            <div className="flexCol shrink-0 border border-primary bg-primary rounded-2xl" key={item.id}>
-              <div className="relative">
-                <img src={item.image} className='h-50 md:h-100 rounded-2xl rounded-b-none cursor-pointer' alt="" onClick={() => Navigate(`/productPage/${item.id}`)} />
-              </div>
-              <div className="flex justify-center items-center w-full py-5 border border-primary border-t-accent text-xl font-bold">
-                <span>{item.title}</span>
-              </div>
-              <div className="flex max-md:flex-wrap px-2 pb-5 justify-between items-center w-full">
-                <span className='p-2 rounded-2xl bg-background text-white'>₹{item.price}</span>
-                <span onClick={() => Navigate(`/productPage/${item.id}`)} className="hidden md:flex cursor-pointer py-2 px-4 bg-background text-white rounded-3xl">View Details </span>
-                <button onClick={() => addtoCart(item.id)} className='flex items-center gap-5 py-2 px-4 rounded-2xl bg-accent text-black text-xl cursor-pointer'>Add to Cart <FaCartPlus /></button>
-              </div>
-            </div>
-          ))}
+         <ProductRow products={recommended} addtoCart={addtoCart} />
         </div>
       </section>
 
@@ -135,18 +123,22 @@ function Home({ user, setCartUpdate, cartUpdate, addtoCart }) {
 
       <section className="flexCol w-full my-10">
         <h1 className="w-[90%] text-3xl mb-10 font-bold">What our customers say</h1>
-        <div className="flex flex-nowrap items-center gap-10 w-[90%] overflow-x-auto scrollbar-none">
+        <div className="flex flex-nowrap items-stretch gap-10 w-[90%] overflow-x-auto scrollbar-none">
 
           {
-            testimonials.map((item,index) => (
+            testimonials.map((item, index) => (
               <div className="flex gap-5 p-5 bg-primary rounded-3xl shrink-0 ">
-                <img className="rounded-full" src={`https://picsum.photos/100?random=1${index + 1}`} ></img>
-                <div className=" flex flex-col gap-5 w-140">
-                  
-                  <h1> {item.name}</h1>
+                <div>
+                  <img className="rounded-full" src={`https://picsum.photos/id/${index + 100}/150`} ></img>
+                </div>
+
+                <div className=" flex flex-col gap-5 w-70">
+
+                  <h1 className="text-2xl font-bold"> {item.name}</h1>
+                  <Stars value={item.rating}/>
                   <p>{item.review}</p>
                 </div>
-                
+
               </div>
 
             ))

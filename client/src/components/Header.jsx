@@ -27,7 +27,7 @@ function Header({user,setUser,products}) {
       <main className='flexMain bg-background py-4 sticky top-0 z-2 w-full'>
         <section className='w-[90%] flex justify-between items-center'>
           <Link to={"/"} id="navLogo" className='font-bold text-3xl cursor-pointer black-ops-one-regular text-slate-700'>
-            <img src="/logo-white.png" className="h-20" alt="" />
+            <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669539/logo-white_d3pwoy.png" className="h-20" alt="" />
           </Link>
           <ul className='hidden md:flex gap-5 text-2xl border border-accent rounded-3xl bg-primary shadow-md px-20 py-2 font-semibold text-secondary'>
             <Link className="text-accent" to={"/"}>Home</Link>
