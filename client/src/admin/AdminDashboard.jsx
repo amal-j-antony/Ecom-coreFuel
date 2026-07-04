@@ -48,13 +48,13 @@ function AdminDashboard({ user, setUser }) {
 
     return (
         <>
-            <main className='bg-background pt-3 h-screen w-full flexCOl'>
+            <main className='bg-background pt-3 min-h-screen w-full flexCol'>
                 <section className='grid grid-cols-5 gap-5 p-10'>
-                    <div className="pt-10 h-full bg-primary min-h-screen rounded-xl flex flex-col item-center px-5">
+                    <div className="pt-10 h-full bg-primary text-secondary min-h-screen rounded-xl hidden md:flex flex-col item-center px-5 col-span-1">
                         <h1 className='font-bold text-xl flex gap-2 items-center'><Menu /><span className='hidden md:flex'>MENU</span></h1>
                         <Separator className='my-3' />
-                        <ul className='text-xl flex flex-col gap-'>
-                            <li onClick={() => setTab("overview")} className='flex items-center gap-2 cursor-pointer p-2 '><SquareChartGantt /><span className='hidden md:flex'>Overview</span></li>
+                        <ul className='text-md md:text-xl flex flex-col'>
+                            <li onClick={() => setTab("overview")} className=' flex items-center gap-2 cursor-pointer p-2 '><SquareChartGantt /><span className='hidden md:flex'>Overview</span></li>
                             <li className='flex items-center gap-2 cursor-pointer p-2 '><CircleUser /><span className='hidden md:flex'>Users</span></li>
                             <li onClick={() => setTab("products")} className='flex items-center gap-2 cursor-pointer p-2 '><BookA /> <span className='hidden md:flex'>Products</span></li>
                             <li onClick={handleLogout} className='flex items-center gap-2 cursor-pointer p-2 '><LogOut /><span className='hidden md:flex'>Log Out</span></li>

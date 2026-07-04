@@ -99,7 +99,7 @@ function Shop({addtoCart}) {
         </Carousel>
       </section>
 
-      <section className='grid grid-cols-6'>
+      <section className='grid grid-cols-6 text-secondary'>
         <div className="col-span-1 w-full flex flex-col items-center  ">
           <h1 className="py-10 text-4xl font-bold">Filters</h1>
           <div className="bg-primary rounded-3xl w-full sticky top-40 min-h-200 ms-20 flex flex-col items-center py-10">
@@ -153,18 +153,18 @@ function Shop({addtoCart}) {
           {/* products row 1 */}
           <section className=' pb-10 w-full flexCol justify-center items-center bg-background'>
     
-            <div className="flex flex-wrap w-[90%] scrollbar-hide items-center gap-9  ">
+            <div className="grid grid-cols-3 w-[90%] scrollbar-hide items-center gap-9  ">
               {products?.map((item, index) => {
                 return (
-                  <div className="border border-primary flexCol shrink-0 rounded-2xl bg-primary" id={item.id} key={item.id}>
+                  <div className="border border-primary flexCol shrink-0 rounded-2xl bg-slate-100" id={item.id} key={item.id}>
                     <img src={item.image} className='h-100 rounded-2xl rounded-b-none cursor-pointer' alt="" onClick={() => Navigate(`/productPage/${item.id}`)} />
                     <div className="flex justify-center items-center w-full py-5 border border-primary border-t-accent font-bold text-xl">
                       <span>{item.title}</span>
                     </div>
                     <div className="flex px-4 pb-5 justify-between items-center w-full">
-                      <span className='py-2 px-4 rounded-2xl bg-background text-white'>₹{item.price}</span>
-                      <span onClick={() => Navigate(`/productPage/${item.id}`)} className="cursor-pointer py-2 px-4 bg-background text-white rounded-3xl">View Details </span>
-                      <button onClick={() => addtoCart(item.id)} className='flex items-center gap-2 py-2 px-4 rounded-2xl bg-accent text-black text-xl cursor-pointer'>Add to Cart <FaCartPlus /></button>
+                      <span className='py-2 px-4 rounded-2xl bg-slate-200 text-secondary'>₹{item.price}</span>
+                      <span onClick={() => Navigate(`/productPage/${item.id}`)} className="cursor-pointer py-2 px-4 bg-slate-200 text-secondary rounded-3xl">View Details </span>
+                      <button onClick={() => addtoCart(item.id)} className='flex items-center gap-2 py-2 px-4 rounded-2xl bg-green-400 text-black text-xl cursor-pointer'>Add to Cart <FaCartPlus /></button>
                     </div>
                   </div>
                 )

@@ -2,11 +2,11 @@ import React from 'react'
 
 function Footer() {
     return (
-        <main className='mt-150 flexMain flex-wrap w-full bg-primary p-5'>
-            <footer className='w-[90%] grid grid-cols-3'>
+        <main className=' flexMain flex-wrap w-full bg-primary p-5'>
+            <footer className='w-[90%] grid grid-cols-1 md:grid-cols-3'>
                 <div className="flex flex-col items-center">
                     <h1 className='text-3xl font-semibold flex items-center'>
-                        <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669539/logo-white_d3pwoy.png" className='h-20' alt="" />
+                        <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669535/logo_gsf3te.png" className='h-20' alt="" />
                     </h1>
                     <p>Fuel every rep. Power every goal</p>
                 </div>

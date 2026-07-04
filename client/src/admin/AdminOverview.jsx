@@ -16,7 +16,7 @@ function AdminOverview({user}) {
         getOrders()
     }, [user.id])
   return (
-    <div className="px-10 py-10 flex flex-col gap-5 col-span-4 bg-primary  min-h-screen rounded-xl">
+    <div className="px-10 py-10 flex flex-col gap-5 col-span-4 bg-primary  min-h-screen rounded-xl text-secondary">
       <h1 className='text-4xl font-bold'>Welcome ,{user.name}</h1>
       {/* <h2 className='text-3xl font-bold'>Sales summary</h2> */}
       <div className="flexCol">
@@ -39,14 +39,14 @@ function AdminOverview({user}) {
                 <h1 className='text-2xl flex justify-between'><b >Amount:</b> ₹ {item.amount}</h1>
                 <h1 className='text-2xl flex justify-between'><b >Products:</b>{item.data.length}</h1>
                 <h1 className='text-2xl flex justify-between'><b >Order date:</b>29/06/2026</h1>
-                <div className='flex gap-3 bg-[#1E1F26] rounded-3xl p-4 flex-nowrap overflow-x-auto scrollbar-none'>
+                <div className='flex gap-3 border border-zinc-400 rounded-3xl p-4 flex-nowrap overflow-x-auto scrollbar-none'>
                   {
                     item.data.map(product => (
                       <img src={product.image} className='h-20 shrink-0' alt="" />
                     ))
                   }
                 </div>
-                <button className=''>View Order</button>
+                <button className='bg-slate-300 py-4 text-xl rounded-xl'>View Order</button>
               </div>
             )
           })

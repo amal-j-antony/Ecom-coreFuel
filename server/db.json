@@ -124,15 +124,6 @@
       "weight": "1kg",
       "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669535/creatine-yellow-Photoroom_vkjbpa.png",
       "price": 599
-    },
-    {
-      "id": "P10",
-      "title": "Protein bar XL",
-      "group": "protein-bar",
-      "description": "protein bar- chocolate",
-      "weight": "89g",
-      "price": "100",
-      "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782798146/protbars4_u6gbb4.png"
     }
   ],
   "groups": {
@@ -268,7 +259,14 @@
       "review": "You can tell this isn't a cheap protein. Great taste, premium packaging and excellent customer service."
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "userId": "FJqu6S9hth4",
+      "pID": "P03",
+      "qty": 1,
+      "id": 1
+    }
+  ],
   "orders": [
     {
       "user": "EBblIz-C7d4",
