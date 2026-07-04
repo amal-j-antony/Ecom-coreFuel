@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import { IoIosArrowForward } from "react-icons/io";
 
 
+
 function CartPage({ user, products, getCartProducts }) {
     const [initialAmt, setInitialAmt] = useState(0)
     const [shipping, setShipping] = useState(0)
@@ -172,7 +173,7 @@ function CartPage({ user, products, getCartProducts }) {
 
     return (
         <>
-            <section className='w-full h-full min-h-screen flex justify-center'>
+            <section className='w-full h-full min-h-screen flex justify-center text-accent'>
                 <div className="w-full container grid grid-cols-1 md:grid-cols-3 justify-between gap-10 px-10">
                     <div className='w-full col-span-2'>
                         <h1 className="text-5xl font-bold py-10">Cart</h1>
@@ -274,6 +275,7 @@ function CartPage({ user, products, getCartProducts }) {
                         }
                     </div>
                 </div>
+               
             </section>
 
         </>
