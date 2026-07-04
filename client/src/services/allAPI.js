@@ -1,5 +1,5 @@
 import commonAPI from "./commonAPI";
-import { serverURL } from "./serverURL";
+import  serverURL  from "./serverURL";
 
 //add products to cart
 export const addProductToCartAPI = async (data) => {
