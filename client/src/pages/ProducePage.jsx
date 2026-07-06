@@ -101,7 +101,7 @@ function ProducePage({ getCartProducts, products, user }) {
 
           <span className='pb-10 text-2xl flex items-center text-zinc-600'>Set Quantity: {count}</span>
 
-          <div className='flex w-full gap-10 justify-start items-center bg-background'>
+          <div className='flex flex-wrap w-full gap-10 justify-start items-center bg-background'>
             {/* <button onClick={() => setCount(count < 21 ? count + 1 : count)} className='bg-slate-200 py-5 px-20 cursor-pointer'>+</button>
             <span>{count}</span>
             <button onClick={() => setCount(count > 0 ? count - 1 : count)} className='bg-slate-200 py-5 px-20 cursor-pointer'>-</button> */}
@@ -110,20 +110,20 @@ function ProducePage({ getCartProducts, products, user }) {
               setCount(count == 1 ? 0 : 1)
               setProductData({ ...productData, qty: 1 })
             }
-            } className={count == 1 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>1</span>
+            } className={count == 1 ? "border-accent border bg-primary text-black px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>1</span>
             <span onClick={() => {
               setCount(count == 2 ? 0 : 2)
               setProductData({ ...productData, qty: 2 })
             }
-            } className={count == 2 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>2</span>
+            } className={count == 2 ? "border-accent border bg-primary text-black px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>2</span>
             <span onClick={() => {
               setCount(count == 3 ? 0 : 3)
               setProductData({ ...productData, qty: 3 })
-            }} className={count == 3 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>3</span>
+            }} className={count == 3 ? "border-accent border bg-primary text-black px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>3</span>
             <span onClick={() => {
               setCount(count == 5 ? 0 : 5)
               setProductData({ ...productData, qty: 5 })
-            }} className={count == 5 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>5</span>
+            }} className={count == 5 ? "border-accent border bg-primary text-black px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>5</span>
             <input onChange={(e) => {
               setCount(e.target.value)
               setProductData({...productData, qty: Number(e.target.value)})
@@ -131,13 +131,15 @@ function ProducePage({ getCartProducts, products, user }) {
           </div>
 
 
-          <button onClick={addTocart} className='w-full rounded-3xl my-5 p-4 bg-accent text-3xl font-bold text-black'>Add to cart</button>
+
+
+          <button onClick={addTocart} className='w-full rounded-3xl my-5 p-4 bg-accent text-3xl font-bold text-white'>Add to cart</button>
 
           <button className='w-full rounded-3xl  p-4 bg-black text-3xl font-bold text-white'>Buy Now</button>
 
-          <h1 className="text-3xl font-bold my-5">Reviews</h1>
+          <h1 className="text-3xl font-bold my-5 text-black">Reviews</h1>
 
-          <div className='grid grid-cols-2 gap-5 items-stretch'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch '>
             {
               testimonials.slice(0,6).map((item, index) => 
                 (
@@ -148,9 +150,9 @@ function ProducePage({ getCartProducts, products, user }) {
 
                     <div className=" flex flex-col gap-5 w-70">
 
-                      <h1 className="text-2xl font-bold"> {item.name}</h1>
+                      <h1 className="text-2xl font-bold text-slate-800"> {item.name}</h1>
                       <Stars value={item.rating} />
-                      <p>{item.review}</p>
+                      <p className='text-slate-600'>{item.review}</p>
                     </div>
 
                   </div>
