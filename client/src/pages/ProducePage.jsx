@@ -1,10 +1,11 @@
 import Stars from '@/components/Stars'
-import { addProductToCartAPI, editCartItemQTYapi, getProductById, getTestimonialsAPI } from '@/services/allAPI'
+import { addProductToCartAPI, editCartItemQTYapi, getAllProductsAPI, getProductById, getTestimonialsAPI } from '@/services/allAPI'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 
 function ProducePage({ getCartProducts, products, user }) {
+  const [allProducts, setAllProducts] = useState([])
   const [testimonials, setTestimonials] = useState([])
   const [active, setActive] = useState(0)
   const [count, setCount] = useState(0)
@@ -12,8 +13,14 @@ function ProducePage({ getCartProducts, products, user }) {
   const [productData, setProductData] = useState({})
   console.log(productData);
   console.log(testimonials);
-  
+
   const navigate = useNavigate()
+
+  const loadAllProducts = async () => {
+    const result = await getAllProductsAPI()
+    console.log(result);
+    setAllProducts(result.data)
+  }
 
   const addTocart = async () => {
     if (!user.id) {
@@ -34,16 +41,16 @@ function ProducePage({ getCartProducts, products, user }) {
       console.log(editResult);
       getCartProducts()
       toast.success('Product added to cart', {
-                        position: "bottom-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: false,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                        transition: Bounce,
-                    });
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
     else {
 
@@ -81,7 +88,8 @@ function ProducePage({ getCartProducts, products, user }) {
   useEffect(() => {
     pageSetup(id)
     getTestimonials()
-  }, [])
+    loadAllProducts()
+  }, [id])
   return (
     <>
       <section className='px-10 pt-20 w-full grid grid-cols-1 md:grid-cols-2 gap-10 bg-backgound'>
@@ -126,10 +134,22 @@ function ProducePage({ getCartProducts, products, user }) {
             }} className={count == 5 ? "border-accent border bg-primary text-black px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>5</span>
             <input onChange={(e) => {
               setCount(e.target.value)
-              setProductData({...productData, qty: Number(e.target.value)})
+              setProductData({ ...productData, qty: Number(e.target.value) })
             }} type="number" placeholder='custom' className='placeholder:text-white bg-secondary p-3 w-25' />
           </div>
-
+          <h1 className='text-black text-2xl font-bold pt-5'>Variants:</h1>
+          <div className='flex gap-5 py-5'>
+            {
+              allProducts.filter(item => item.group == productData.group).map(item => (
+                <div onClick={() => navigate(`/productPage/${item.id}`)}
+                  className={item.id == productData.id
+                    ? "border border-slate-600 bg-slate-500 rounded-xl cursor-pointer"
+                    : "border border-slate-600 bg-slate-300 rounded-xl cursor-pointer"}>
+                  <img src={item.image} className='h-20' alt="" />
+                </div>
+              ))
+            }
+          </div>
 
 
 
@@ -141,22 +161,22 @@ function ProducePage({ getCartProducts, products, user }) {
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch '>
             {
-              testimonials.slice(0,6).map((item, index) => 
-                (
-                  <div className="flex gap-5 p-5 bg-primary rounded-3xl shrink-0 ">
-                    <div>
-                      <img className="rounded-full" src={`https://picsum.photos/id/${index + 100}/150`} ></img>
-                    </div>
-
-                    <div className=" flex flex-col gap-5 w-70">
-
-                      <h1 className="text-2xl font-bold text-slate-800"> {item.name}</h1>
-                      <Stars value={item.rating} />
-                      <p className='text-slate-600'>{item.review}</p>
-                    </div>
-
+              testimonials.slice(0, 6).map((item, index) =>
+              (
+                <div className="flex gap-5 p-5 bg-primary rounded-3xl shrink-0 ">
+                  <div>
+                    <img className="rounded-full" src={`https://picsum.photos/id/${index + 100}/150`} ></img>
                   </div>
-                )
+
+                  <div className=" flex flex-col gap-5 w-70">
+
+                    <h1 className="text-2xl font-bold text-slate-800"> {item.name}</h1>
+                    <Stars value={item.rating} />
+                    <p className='text-slate-600'>{item.review}</p>
+                  </div>
+
+                </div>
+              )
               )
             }
           </div>

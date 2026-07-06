@@ -265,12 +265,6 @@
       "pID": "B1",
       "qty": 1,
       "id": 4
-    },
-    {
-      "userId": "5GjoIZs5mYQ",
-      "pID": "P02",
-      "qty": 3,
-      "id": 5
     }
   ],
   "orders": [
@@ -1140,6 +1134,26 @@
         }
       ],
       "id": 15
+    },
+    {
+      "user": "5GjoIZs5mYQ",
+      "amount": 698,
+      "date": "2026-07-06T20:15:48.049Z",
+      "data": [
+        {
+          "id": "P01",
+          "group": "protein-powder",
+          "title": "Tropical Blast Protein Powder",
+          "description": "Protein powder with mint, lemon and coconut freshness",
+          "weight": "1kg",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669536/tropicalProtein-Photoroom_zrk3ee.png",
+          "price": 349,
+          "userId": "5GjoIZs5mYQ",
+          "qty": 2,
+          "cartID": 5
+        }
+      ],
+      "id": 16
     }
   ]
 }
