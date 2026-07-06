@@ -33,6 +33,17 @@ function ProducePage({ getCartProducts, products, user }) {
       })
       console.log(editResult);
       getCartProducts()
+      toast.success('Product added to cart', {
+                        position: "bottom-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
     }
     else {
 
@@ -80,15 +91,15 @@ function ProducePage({ getCartProducts, products, user }) {
         </div>
 
         <div className='flex flex-col items-start justify-start'>
-          <span className='text-3xl font-bold'>{productData.title}</span>
+          <span className='text-3xl font-bold text-zinc-900'>{productData.title}</span>
 
           <span className='text-2xl text-slate-500 '>{productData.description}</span>
 
           {<span className='text-2xl text-slate-500 pt-10'>Weight: {productData.weight}</span>}
 
-          <span className='text-3xl font-bold py-10'>₹{productData.price}</span>
+          <span className='text-3xl font-bold py-10 text-zinc-900'>₹{productData.price}</span>
 
-          <span className='pb-10 text-2xl flex items-center'>Set Quantity: {count}</span>
+          <span className='pb-10 text-2xl flex items-center text-zinc-600'>Set Quantity: {count}</span>
 
           <div className='flex w-full gap-10 justify-start items-center bg-background'>
             {/* <button onClick={() => setCount(count < 21 ? count + 1 : count)} className='bg-slate-200 py-5 px-20 cursor-pointer'>+</button>
@@ -99,21 +110,24 @@ function ProducePage({ getCartProducts, products, user }) {
               setCount(count == 1 ? 0 : 1)
               setProductData({ ...productData, qty: 1 })
             }
-            } className={count == 1 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-primary px-5 py-3 cursor-pointer'}>1</span>
+            } className={count == 1 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>1</span>
             <span onClick={() => {
               setCount(count == 2 ? 0 : 2)
               setProductData({ ...productData, qty: 2 })
             }
-            } className={count == 2 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-primary px-5 py-3 cursor-pointer'}>2</span>
+            } className={count == 2 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>2</span>
             <span onClick={() => {
               setCount(count == 3 ? 0 : 3)
               setProductData({ ...productData, qty: 3 })
-            }} className={count == 3 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-primary px-5 py-3 cursor-pointer'}>3</span>
+            }} className={count == 3 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>3</span>
             <span onClick={() => {
               setCount(count == 5 ? 0 : 5)
               setProductData({ ...productData, qty: 5 })
-            }} className={count == 5 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-primary px-5 py-3 cursor-pointer'}>5</span>
-            <input type="text" placeholder='custom' className='placeholder:text-white bg-primary p-3 w-20' />
+            }} className={count == 5 ? "border-accent border bg-primary px-5 py-3 cursor-pointer" : 'bg-secondary px-5 py-3 cursor-pointer'}>5</span>
+            <input onChange={(e) => {
+              setCount(e.target.value)
+              setProductData({...productData, qty: Number(e.target.value)})
+            }} type="number" placeholder='custom' className='placeholder:text-white bg-secondary p-3 w-25' />
           </div>
 
 

@@ -13,6 +13,7 @@ import { IoIosArrowForward } from "react-icons/io";
 
 
 function CartPage({ user, products, getCartProducts }) {
+    const [activePayment, setActivePayment] = useState("")
     const [initialAmt, setInitialAmt] = useState(0)
     const [shipping, setShipping] = useState(0)
     const [discount, setDiscount] = useState(0)
@@ -121,6 +122,7 @@ function CartPage({ user, products, getCartProducts }) {
         const order = {
             user: user.id,
             amount: finalAmt,
+            date: new Date(),
             data: []
         }
         productData.map(item => {
@@ -130,22 +132,59 @@ function CartPage({ user, products, getCartProducts }) {
         try {
             const result = await addOrderAPI(order)
             console.log(result);
-            if (result.status == 201){
+            if (result.status == 201) {
                 await Promise.all(
                     productData.map(item => {
-                     deleteItemInCartAPI(item.cartID)
-                     console.log("delete",item.cartID);
-                     
-                })
+                        deleteItemInCartAPI(item.cartID)
+                        console.log("delete", item.cartID);
+
+                    })
                 )
                 navigate("/payment")
                 getCartProducts()
             }
         } catch (error) {
             console.log(error);
-            
+
         }
 
+    }
+
+    const clearCart = async () => {
+        try {
+            await Promise.all(
+                productData.map(item => {
+                    deleteItemInCartAPI(item.cartID)
+                    console.log("delete", item.cartID);
+
+                })
+            )
+            getCartProducts()
+            toast.success('Cart Cleared', {
+                position: "bottom-center",
+                autoClose: 2200,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
+            
+
+        } catch (error) {
+            console.log("clearcart error ", error);
+
+        }
+
+    }
+
+    const handlePayment = (method) => {
+        activePayment == method ?
+            setActivePayment("")
+            :
+            setActivePayment(method)
     }
 
 
@@ -192,45 +231,52 @@ function CartPage({ user, products, getCartProducts }) {
                             </div>
 
                             :
-                            <table className='border-separate border-spacing-5 w-full'>
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            No.
-                                        </th>
-                                        <th></th>
-                                        <th>Product Name</th>
-                                        <th>Price</th>
-                                        <th>Qty.</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {productData?.map((item, index) => (
-                                        <tr key={index} >
-                                            <td>{index + 1}</td>
-                                            <td>
-                                                <img src={item.image} className='h-30' alt="" />
-                                            </td>
-                                            <td>
-                                                <span>{item.title}</span>
-                                            </td>
-                                            <td>
-                                                <span>
-                                                    {item.price}
-                                                </span>
-                                            </td>
-                                            <td className='h-full'>
-                                                <div className=' bg-primary flex justify-between items-center gap-5'>
-                                                    <button onClick={() => handleQtyChange(item.cartID, 1, index)} className=' p-3 bg-accent'><Plus /></button>
-                                                    <span className='text-2xl'>{item.qty}</span>
-                                                    <button onClick={() => handleQtyChange(item.cartID, -1, index)} className=' p-3 bg-accent'><Minus /></button>
-                                                </div>
-                                            </td>
+                            <div>
+                                <table className='border-separate border-spacing-5 w-full'>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                No.
+                                            </th>
+                                            <th></th>
+                                            <th>Product Name</th>
+                                            <th>Price</th>
+                                            <th>Qty.</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {productData?.map((item, index) => (
+                                            <tr key={index} >
+                                                <td>{index + 1}</td>
+                                                <td>
+                                                    <img src={item.image} className='h-30' alt="" />
+                                                </td>
+                                                <td>
+                                                    <span>{item.title}</span>
+                                                </td>
+                                                <td>
+                                                    <span>
+                                                        {item.price}
+                                                    </span>
+                                                </td>
+                                                <td className='h-full'>
+                                                    <div className=' bg-primary flex justify-between items-center gap-5'>
+                                                        <button onClick={() => handleQtyChange(item.cartID, 1, index)} className=' p-3 bg-accent text-primary'><Plus /></button>
+                                                        <span className='text-2xl'>{item.qty}</span>
+                                                        <button onClick={() => handleQtyChange(item.cartID, -1, index)} className=' p-3 bg-accent text-primary'><Minus /></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                <div className="w-full flex justify-end pe-5">
+                                    <button onClick={clearCart} className='border-red-500 border rounded-3xl py-2 px-4 hover:bg-red-500 text-red-500 cursor-pointer hover:text-white  duration-500'>Clear Cart</button>
+                                </div>
+                            </div>
+
                         }
+                       
                     </div>
                     <div className="max-md:w-full md:min-w-[30vw] flex justify-center items-center">
                         {
@@ -242,7 +288,7 @@ function CartPage({ user, products, getCartProducts }) {
                                     <span className='text-3xl font-semibold'>Summary</span>
                                     <hr className='h-1 bg-slate-900' />
                                     <span className='flex justify-between text-xl'>Total items: <span>{productData.reduce((a, b) => (a + b.qty), 0)}</span></span>
-                                    <span className='flex justify-between text-xl'>Total cost: <span>INR {productData.reduce((a, b) => (a + b.price * b.qty), 0)}</span></span>
+                                    <span className='flex justify-between text-xl'>Total cost: <span>₹{productData.reduce((a, b) => (a + b.price * b.qty), 0)}</span></span>
                                     <span className='flex justify-between text-xl'>Shipping cost: {shipping ?
                                         <span>INR {shipping} </span> :
                                         <span>Free</span>
@@ -265,17 +311,20 @@ function CartPage({ user, products, getCartProducts }) {
                                     </form>
                                     <span className='flex justify-center'>Select Payment Method</span>
                                     <div className="flex justify-center gap-10">
-                                        <span className="border border-slate-500 p-2">UPI</span>
-                                        <span className="border border-slate-500 p-2">CARD</span>
-                                        <span className="border border-slate-500 p-2">NET Banking</span>
+                                        <span onClick={() => handlePayment("upi")}
+                                            className={activePayment == "upi" ? "border border-slate-50 p-2" : "border border-slate-500 p-2"}
+
+                                        >UPI</span>
+                                        <span onClick={() => handlePayment("upi")} className="border border-slate-500 p-2">CARD</span>
+                                        <span onClick={() => handlePayment("upi")} className="border border-slate-500 p-2">NET Banking</span>
                                     </div>
-                                    <span>Grand total: <span>INR {finalAmt}</span></span>
+                                    <span className='text-2xl font-bold'>Grand total: <span>₹{finalAmt}</span></span>
                                     <button onClick={() => handleOrder()} className='text-2xl font-bold bg-slate-700 text-white rounded py-3 hover:scale-[1.1] transition duration-300 ease-out'>Proceed to checkout</button>
                                 </div>
                         }
                     </div>
                 </div>
-               
+
             </section>
 
         </>

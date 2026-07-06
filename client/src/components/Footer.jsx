@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
     return (
-        <main className=' flexMain flex-wrap w-full bg-primary p-5'>
+        <main className=' flexMain flex-wrap w-full bg-primary p-5 text-black'>
             <footer className='w-[90%] grid grid-cols-1 md:grid-cols-3'>
                 <div className="flex flex-col items-center">
                     <h1 className='text-3xl font-semibold flex items-center'>

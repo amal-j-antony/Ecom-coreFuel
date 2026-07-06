@@ -9,7 +9,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import UserProfile from './user/UserProfile'
 import AdminDashboard from './admin/AdminDashboard'
-import { ToastContainer, Bounce } from 'react-toastify'
+import { ToastContainer, Bounce, toast } from 'react-toastify'
 import CartPage from './pages/CartPage'
 import Subscription from './pages/Subscription'
 import { addProductToCartAPI, getCartItemByIdAPI, getCartItemsAPI, updateExistingProductinCartAPI } from './services/allAPI'
@@ -75,7 +75,19 @@ function App() {
       try {
         const result = await addProductToCartAPI(cartItem)
         console.log(result);
+        toast.success('Product added to cart!', {
+                        position: "bottom-center",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
         setCartUpdate(cartUpdate + 1)
+        
 
       } catch (error) {
         console.log(error);

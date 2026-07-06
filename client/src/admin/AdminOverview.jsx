@@ -16,7 +16,7 @@ function AdminOverview({user}) {
         getOrders()
     }, [user.id])
   return (
-    <div className="px-10 py-10 flex flex-col gap-5 col-span-4 bg-primary  min-h-screen rounded-xl text-secondary">
+    <div className="px-10 py-10 flex flex-col gap-5 col-span-5 md:col-span-4 bg-primary  min-h-screen rounded-xl text-secondary">
       <h1 className='text-4xl font-bold'>Welcome ,{user.name}</h1>
       {/* <h2 className='text-3xl font-bold'>Sales summary</h2> */}
       <div className="flexCol">
@@ -25,7 +25,7 @@ function AdminOverview({user}) {
         </div>
       </div>
       <h2 className='text-3xl font-bold'>Recent orders</h2>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {
           orders.map((item, index) => {
             return (

@@ -262,9 +262,9 @@
   "cart": [
     {
       "userId": "FJqu6S9hth4",
-      "pID": "P03",
+      "pID": "B1",
       "qty": 1,
-      "id": 1
+      "id": 4
     }
   ],
   "orders": [
@@ -532,6 +532,50 @@
         }
       ],
       "id": 5
+    },
+    {
+      "user": "EBblIz-C7d4",
+      "amount": 527,
+      "date": "2026-07-06T18:15:17.966Z",
+      "data": [
+        {
+          "id": "B1",
+          "group": "protein-bar",
+          "title": "Strawberry Protein Bar",
+          "description": "Protein bar with the sweet and refreshing taste of ripe strawberries",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Strawberry-Photoroom_mwwdc4.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 5
+        },
+        {
+          "id": "B2",
+          "group": "protein-bar",
+          "title": "Coconut Blast Protein Bar",
+          "description": "Protein bar with a tropical blend of creamy coconut and natural sweetness",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Coco-Photoroom_yemhsj.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 6
+        },
+        {
+          "id": "P01",
+          "group": "protein-powder",
+          "title": "Tropical Blast Protein Powder",
+          "description": "Protein powder with mint, lemon and coconut freshness",
+          "weight": "1kg",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669536/tropicalProtein-Photoroom_zrk3ee.png",
+          "price": 349,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 7
+        }
+      ],
+      "id": 6
     }
   ]
 }

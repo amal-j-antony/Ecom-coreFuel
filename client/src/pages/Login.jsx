@@ -45,7 +45,7 @@ function Login({ user, setUser }) {
                     }
                     localStorage.setItem("userLogin", JSON.stringify(loginUser))
                     setUser(loginUser)
-                    navigate("/")
+                    navigate(`/userProfile/${loginUser.role}/${loginUser.id}`)
                 } else {
                     toast.error('Incorrect password', {
                         position: "top-center",
@@ -92,10 +92,10 @@ function Login({ user, setUser }) {
             <section className='w-full h-screen flexCol'>
 
                 <div className='container flexCol gap-5 w-auto'>
-                    <h1 className='text-4xl font-bold black-ops-one-regular'>Welcome Back</h1>
+                    <h1 className='text-4xl font-bold black-ops-one-regular text-black'>Welcome Back</h1>
                     <div className='flexCol w-auto gap-5'>
-                        <input onChange={(e) => handleInput(e, "email")} value={input.email} type="text" className='border border-slate-500 p-3 rounded-2xl' placeholder='Enter email' name="" id="" />
-                        <input onChange={(e) => handleInput(e, "password")} value={input.password} type="password" className='border border-slate-500 p-3 rounded-2xl' placeholder='Enter password' name="" id="" />
+                        <input onChange={(e) => handleInput(e, "email")} value={input.email} type="text" className='placeholder:text-slate-500 text-black border border-slate-500 p-3 rounded-2xl' placeholder='Enter email' name="" id="" />
+                        <input onChange={(e) => handleInput(e, "password")} value={input.password} type="password" className='placeholder:text-slate-500 text-black border border-slate-500 p-3 rounded-2xl' placeholder='Enter password' name="" id="" />
                         <button onClick={validate} className='cursor-pointer  bg-accent text-white font-semibold text-xl  p-3 rounded-xl w-full hover:bg-slate-100 hover:text-black transition-all duration-500'>Login</button>
                         <Link to={"/register"} className='text-center cursor-pointer border bg-slate-950 text-white font-semibold text-xl  p-3 rounded-xl w-full hover:bg-slate-100 hover:text-black transition-all duration-500'>Register Now</Link>
                     </div>

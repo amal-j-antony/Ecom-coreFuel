@@ -6,7 +6,7 @@ export const addProductToCartAPI = async (data) => {
    return await commonAPI("POST", `${serverURL}/cart`, data)
 }
 
-//add products to cart
+//update products in cart
 export const updateExistingProductinCartAPI = async (data,id) => {
    return await commonAPI("PUT", `${serverURL}/cart/${id}`, data)
 }
@@ -101,3 +101,4 @@ export const addProductsAPI = async (data) => {
 export const deleteProductAPI = async (id) => {
    return await commonAPI("DELETE",`${serverURL}/products/${id}`,{})
 }
+

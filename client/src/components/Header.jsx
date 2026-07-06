@@ -16,9 +16,10 @@ import Cart from './Cart';
 import { AiFillHome } from "react-icons/ai";
 import { SiOpenaigym } from "react-icons/si";
 import { useState } from "react";
+import { RxCross2 } from "react-icons/rx";
 
 function Header({ user, setUser, products }) {
-  const [open,setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   const handleProfileCLick = () => {
     user.id ? navigate(`/userProfile/${user?.role}/${user?.id}`)
       : navigate(`/login`)
@@ -38,34 +39,33 @@ function Header({ user, setUser, products }) {
             <Link className="text-accent" to={"/all"}>Shop</Link>
             <Link className="text-accent cursor-pointer" to={"/subscriptionLanding"} >Corefuel MAX</Link>
           </ul>
-          <ul className='shadow-md flexMain gap-2 md:gap-5 md:bg-primary md:border-accent md:border py-2 ps-5  md:ms-15 rounded-3xl'>
+          <ul className='shadow-md flexMain gap-2 md:gap-5 md:bg-primary md:border-accent md:border py-2 px-5  md:ms-15 rounded-3xl'>
             <li className="hidden md:flex" onClick={handleProfileCLick}>
               <FaUser className="text-xl md:text-xl cursor-pointer text-accent" />
             </li>
-            <Link to={"/cart"} className="cursor-pointer flex justify-center items-center gap-3  md:bg-primary py-1 px  rounded-3xl">
+            <Link to={"/cart"} className="cursor-pointer flex justify-center items-center gap-3  md:bg-primary py-1 px  rounded-3xl relative">
               {/* <Cart /> */}
               <IoIosCart className="text-3xl text-accent" />
-              
+              { products.length > 0 && <div className="absolute top-0 -right-2 rounded-full text-sm px-1 bg-red-500">{products.length}</div> }
             </Link>
             <li>
               <Drawer open={open} onOpenchange={setOpen} direction="left" >
-                <DrawerTrigger onClick={()=>setOpen(true)} className="flexMain">
-                  <IoMdMenu className='flex md:hidden text-3xl' />
+                <DrawerTrigger onClick={() => setOpen(true)} className="flexMain">
+                  <IoMdMenu className='flex md:hidden text-3xl text-black' />
                 </DrawerTrigger>
-                <DrawerContent className="bg-primary text-secondary">
-                  <DrawerHeader>
-                    <DrawerTitle className="text-">
-                      <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669535/logo_gsf3te.png" className="h-10 md:h-20" alt="" />
-                      <hr />
-                      <ul className="flex flex-col p-5 gap-2">
-                        <Link onClick={()=>setOpen(false)} className="flex gap-2 cursor-pointer" to={"/"}><AiFillHome/> Home</Link>
-                        <Link onClick={()=>setOpen(false)}  className="flex gap-2 cursor-pointer" to={"/all"}><FaShoppingBag/> Shop</Link>
-                        <Link onClick={()=>setOpen(false)}  className="flex gap-2 cursor-pointer" to={"/subscriptionLanding"} ><SiOpenaigym /> Corefuel MAX</Link>
-                        <span onClick={()=>{setOpen(false),handleProfileCLick()}} className="flex gap-2"><FaUser/>Profile</span>
-                        
-                      </ul>
-                    </DrawerTitle>
-                  </DrawerHeader>
+                <DrawerContent className="bg-primary text-secondary p-5">
+                  <div className="flex justify-between">
+                    <img src="https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669535/logo_gsf3te.png" className="h-10 md:h-20" alt="" />
+                    <RxCross2 onClick={() => setOpen(false)} className="h-full text-3xl " />
+                  </div>
+                  <hr />
+                  <ul className="flex flex-col p-5 gap-2">
+                    <Link onClick={() => setOpen(false)} className="flex gap-2 cursor-pointer" to={"/"}><AiFillHome /> Home</Link>
+                    <Link onClick={() => setOpen(false)} className="flex gap-2 cursor-pointer" to={"/all"}><FaShoppingBag /> Shop</Link>
+                    <Link onClick={() => setOpen(false)} className="flex gap-2 cursor-pointer" to={"/subscriptionLanding"} ><SiOpenaigym /> Corefuel MAX</Link>
+                    <span onClick={() => { setOpen(false), handleProfileCLick() }} className="flex gap-2"><FaUser />Profile</span>
+
+                  </ul>
                 </DrawerContent>
               </Drawer>
             </li>

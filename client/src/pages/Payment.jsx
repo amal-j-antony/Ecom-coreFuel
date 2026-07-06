@@ -19,11 +19,11 @@ function Payment() {
         <section className='flexMain w-full h-screen'>
             {
                 loading ? <PropagateLoader 
-                color='#fefefe'/>
+                color='#1e1e1e'/>
                 :
                 <div className="flexCol gap-5 rounded-xl bg-primary p-10">
-                    <CircleCheckBig size={"100"}/>
-                    <span className='text-2xl text-secondary'>Payment Success!</span>
+                    <CircleCheckBig className='text-slate-700' size={"100"}/>
+                    <span className='text-2xl text-slate-700'>Payment Success!</span>
                     <div className="flex justify-center ">
                         <Link to={"/"} className='bg-slate-700 text-white py-2 px-10 w-full rounded-xl'>Back to Home</Link>
                     </div>

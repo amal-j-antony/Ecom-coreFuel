@@ -92,7 +92,7 @@ function AdminProducts() {
                     </div>
 
                 </div>
-                <div className='grid gird-cols-1 md:grid-cols-3 gap-5'>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                     {
                         allProducts.map((item, index) => (
                             <div key={index} className="p-5 border md:min-w-75 border-slate-700 rounded-3xl flex flex-col gap-2">
