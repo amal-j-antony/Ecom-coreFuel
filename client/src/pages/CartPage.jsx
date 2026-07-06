@@ -135,8 +135,8 @@ function CartPage({ user, products, getCartProducts }) {
             if (result.status == 201) {
                 await Promise.all(
                     productData.map(item => {
-                        deleteItemInCartAPI(item.cartID)
                         console.log("delete", item.cartID);
+                        return deleteItemInCartAPI(item.cartID)
 
                     })
                 )
@@ -154,9 +154,9 @@ function CartPage({ user, products, getCartProducts }) {
         try {
             await Promise.all(
                 productData.map(item => {
-                    deleteItemInCartAPI(item.cartID)
-                    console.log("delete", item.cartID);
-
+                    console.log("delete", item.cartID)
+                    return deleteItemInCartAPI(item.cartID)
+                    
                 })
             )
 
