@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
 import Home from './pages/Home'
@@ -30,7 +30,7 @@ function App() {
   console.log("products:", products);
   console.log(user);
   console.log(cartUpdate);
-
+  const navigate = useNavigate()
 
   const loadUser = () => {
     const userDetails = JSON.parse(localStorage.getItem("userLogin"))
@@ -50,6 +50,11 @@ function App() {
   }
 
   const addtoCart = async (productID) => {
+    if(user.id == null){
+      navigate("/login")
+      return
+    }
+
     let cartItem
     const getItem = await getCartItemByIdAPI(productID, user.id)
     console.log(getItem);
