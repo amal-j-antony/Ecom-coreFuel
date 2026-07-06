@@ -265,6 +265,12 @@
       "pID": "B1",
       "qty": 1,
       "id": 4
+    },
+    {
+      "userId": null,
+      "pID": "B2",
+      "qty": 1,
+      "id": 5
     }
   ],
   "orders": [
@@ -576,6 +582,139 @@
         }
       ],
       "id": 6
+    },
+    {
+      "user": "EBblIz-C7d4",
+      "amount": 317,
+      "date": "2026-07-06T18:53:40.349Z",
+      "data": [
+        {
+          "id": "B1",
+          "group": "protein-bar",
+          "title": "Strawberry Protein Bar",
+          "description": "Protein bar with the sweet and refreshing taste of ripe strawberries",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Strawberry-Photoroom_mwwdc4.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 5
+        },
+        {
+          "id": "B2",
+          "group": "protein-bar",
+          "title": "Coconut Blast Protein Bar",
+          "description": "Protein bar with a tropical blend of creamy coconut and natural sweetness",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Coco-Photoroom_yemhsj.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 6
+        },
+        {
+          "id": "B3",
+          "group": "protein-bar",
+          "title": "Blueberry Protein Bar",
+          "description": "Protein bar packed with the juicy flavor of fresh blueberries",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/berry-Photoroom_skuteh.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 7
+        }
+      ],
+      "id": 7
+    },
+    {
+      "user": "EBblIz-C7d4",
+      "amount": 317,
+      "date": "2026-07-06T18:54:36.926Z",
+      "data": [
+        {
+          "id": "B1",
+          "group": "protein-bar",
+          "title": "Strawberry Protein Bar",
+          "description": "Protein bar with the sweet and refreshing taste of ripe strawberries",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Strawberry-Photoroom_mwwdc4.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 5
+        },
+        {
+          "id": "B2",
+          "group": "protein-bar",
+          "title": "Coconut Blast Protein Bar",
+          "description": "Protein bar with a tropical blend of creamy coconut and natural sweetness",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Coco-Photoroom_yemhsj.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 6
+        },
+        {
+          "id": "B3",
+          "group": "protein-bar",
+          "title": "Blueberry Protein Bar",
+          "description": "Protein bar packed with the juicy flavor of fresh blueberries",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/berry-Photoroom_skuteh.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 7
+        }
+      ],
+      "id": 8
+    },
+    {
+      "user": "EBblIz-C7d4",
+      "amount": 357,
+      "date": "2026-07-06T18:55:21.744Z",
+      "data": [
+        {
+          "id": "B1",
+          "group": "protein-bar",
+          "title": "Strawberry Protein Bar",
+          "description": "Protein bar with the sweet and refreshing taste of ripe strawberries",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Strawberry-Photoroom_mwwdc4.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 5
+        },
+        {
+          "id": "B2",
+          "group": "protein-bar",
+          "title": "Coconut Blast Protein Bar",
+          "description": "Protein bar with a tropical blend of creamy coconut and natural sweetness",
+          "weight": "60g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669532/Coco-Photoroom_yemhsj.png",
+          "price": 89,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 6
+        },
+        {
+          "id": "B5",
+          "group": "protein-bar",
+          "title": "Berry Blast XL",
+          "description": "Extra-large protein bar featuring a vibrant mix of berry flavors for lasting energy",
+          "weight": "90g",
+          "image": "https://res.cloudinary.com/dwaaoyztz/image/upload/v1782669538/berryBlastXLnewLogo-Photoroom_nf49za.png",
+          "recommended": true,
+          "price": 129,
+          "userId": "EBblIz-C7d4",
+          "qty": 1,
+          "cartID": 7
+        }
+      ],
+      "id": 9
     }
   ]
 }
